@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const navItems = [
   { label: "ABOUT", href: "#about" },
   { label: "PROJECTS", href: "#projects" },
@@ -95,15 +93,7 @@ export default function Portfolio() {
 
         <div className="hero-art" aria-hidden="true">
           <div className="neon-ring" />
-          <div className="anonymous-figure">
-            <Image
-              src="/anonymous-figure.png"
-              alt=""
-              width={1024}
-              height={1536}
-              priority
-            />
-          </div>
+          <div className="hero-portrait" />
         </div>
 
         <div className="landing-role">

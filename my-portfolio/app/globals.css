@@ -14,7 +14,7 @@
   --font-geist-mono: "Courier New", Courier, monospace;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--text);
   --font-sans: var(--font-geist-sans);
@@ -181,23 +181,9 @@ a {
   z-index: 7;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 8vh, 5.8rem);
+  gap: clamp(4rem, 9vh, 7rem);
   color: #ffffff;
-  font-size: clamp(0.76rem, 1.6vw, 0.92rem);
-  font-weight: 900;
-  letter-spacing: 0.18em;
-}
-
-.side-nav a {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transition:
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.side-nav a:hover {
-  color: var(--accent);
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
   transform: translateX(-3px);
 }
 
@@ -211,8 +197,8 @@ a {
 
 .neon-ring {
   position: absolute;
-  width: min(37vw, 29rem);
-  min-width: 18rem;
+  width: min(52vw, 44rem);
+  min-width: 24rem;
   aspect-ratio: 1;
   border: clamp(1rem, 2.1vw, 1.45rem) solid var(--accent-deep);
   border-radius: 50%;
@@ -220,28 +206,24 @@ a {
     0 0 22px rgba(255, 31, 87, 0.78),
     0 0 80px rgba(255, 31, 87, 0.38),
     inset 0 0 42px rgba(255, 31, 87, 0.28);
-  transform: translateY(-1.4rem);
+  transform: translateY(7rem);
 }
 
-.anonymous-figure {
+.hero-portrait {
   position: absolute;
-  bottom: -1.4rem;
+  top: 56%;
   left: 50%;
-  width: min(34vw, 30rem);
-  min-width: 18rem;
-  height: auto;
-  transform: translateX(-32%);
+  z-index: 2;
+  width: min(34vw, 26rem);
+  height: min(52vw, 38rem);
+  min-width: 14rem;
+  background: url("/ayush-hero.png") center 12% / cover no-repeat;
+  transform: translate(-50%, -42%);
   filter:
-    grayscale(1)
-    contrast(1.08)
-    brightness(0.82)
-    drop-shadow(0 28px 28px rgba(0, 0, 0, 0.95));
-}
-
-.anonymous-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
+    contrast(1.06)
+    saturate(0.86)
+    brightness(0.94)
+    drop-shadow(0 28px 28px rgba(0, 0, 0, 0.92));
 }
 
 .landing-role {
@@ -615,9 +597,9 @@ a {
     writing-mode: horizontal-tb;
   }
 
-  .anonymous-figure {
-    width: min(46vw, 25rem);
-    transform: translateX(-34%);
+  .hero-portrait {
+    width: min(30vw, 20rem);
+    transform: translateX(-50%);
   }
 
   .impact-strip,
@@ -659,11 +641,14 @@ a {
     transform: translateY(-0.3rem);
   }
 
-  .anonymous-figure {
-    bottom: 5rem;
-    width: 20rem;
+  .hero-portrait {
+    top: 48%;
+    width: 16rem;
+    height: 24rem;
     min-width: 0;
-    transform: translateX(-46%);
+    background-position: center 8%;
+    background-size: cover;
+    transform: translate(-50%, -48%);
   }
 
   .landing-role {
