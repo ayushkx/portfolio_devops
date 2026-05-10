@@ -199,6 +199,8 @@ a {
 
   text-shadow:
     0 0 8px rgba(255,0,85,0.45);
+
+  padding-right: clamp(2rem, 8vw, 6rem);
 }
 
 .landing-header h1 span {
@@ -298,10 +300,11 @@ a {
   top: 58%;
   left: 50%;
 
+
   z-index: 2;
 
   width: min(44vw, 38rem);
-  height: min(62vw, 52rem);
+  height: min(62vw, 55rem);
 
   min-width: 22rem;
 
@@ -317,10 +320,10 @@ a {
     saturate(0.75)
     drop-shadow(0 0 25px rgba(255, 0, 85, 0.35))
     drop-shadow(0 0 80px rgba(255, 0, 85, 0.18))
-    drop-shadow(0 30px 40px rgba(0,0,0,0.95));
+    drop-shadow(0 30px 40px rgba(0,0,0,0.75));
 }
 
-.hero-art::after {
+/* .hero-art::after {
   content: "";
 
   position: absolute;
@@ -336,7 +339,7 @@ a {
   filter: blur(55px);
 
   opacity: 0.9;
-}
+} */
 
 .landing-role {
   position: absolute;
@@ -752,6 +755,8 @@ a {
     line-height: 1.5;
 
     letter-spacing: 0.18em;
+
+    padding-right: clamp(1.5rem, 6vw, 3rem);
   }
 
   .neon-ring {
