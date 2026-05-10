@@ -870,13 +870,13 @@ a {
   }
 
   .hero-portrait {
-    top: 48%;
+    top: 62%;
     width: 16rem;
     height: 24rem;
     min-width: 0;
     background-position: center 8%;
     background-size: cover;
-    transform: translate(-50%, -48%);
+    transform: translate(-50%, -50%);
   }
 
   .landing-role {
@@ -894,9 +894,16 @@ a {
   }
 
   .side-nav {
-    right: auto;
-    left: 1.4rem;
+    right: 0.8rem;
+    left: auto;
     bottom: 7rem;
+    flex-direction: column;
+    gap: 2.5rem;
+    font-size: 0.85rem;
+  }
+
+  .side-nav a::after {
+    right: -12px;
   }
 
   .impact-strip,
