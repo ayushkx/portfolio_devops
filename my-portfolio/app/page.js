@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
 const navItems = [
   { label: "ABOUT", href: "#about" },
   { label: "PROJECTS", href: "#projects" },
@@ -65,7 +70,72 @@ const awards = [
   "Silver Jewel Award - HCLTech",
 ];
 
+const terminalLines = [
+  "$ whoami",
+  "Ayush Kushwaha",
+
+  "$ current_role",
+  "Automation & DevOps Engineer",
+
+  "$ skills",
+  "Ansible Terraform Python Linux VMware",
+
+  "$ current_focus",
+  "Agentic AI + Infrastructure Automation",
+
+  "$ status",
+  "Building scalable automation systems",
+];
+
 export default function Portfolio() {
+  const [displayedLines, setDisplayedLines] = useState([]);
+  const [currentLine, setCurrentLine] = useState("");
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+
+    if (lineIndex >= terminalLines.length) {
+
+      const timeout = setTimeout(() => {
+        setDisplayedLines([]);
+        setCurrentLine("");
+        setLineIndex(0);
+        setCharIndex(0);
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+
+    const currentText = terminalLines[lineIndex];
+
+    if (charIndex < currentText.length) {
+
+      const timeout = setTimeout(() => {
+        setCurrentLine((prev) => prev + currentText[charIndex]);
+        setCharIndex((prev) => prev + 1);
+      }, 45);
+
+      return () => clearTimeout(timeout);
+
+    } else {
+
+      const timeout = setTimeout(() => {
+
+        setDisplayedLines((prev) => [...prev, currentText]);
+
+        setCurrentLine("");
+
+        setCharIndex(0);
+
+        setLineIndex((prev) => prev + 1);
+
+      }, 450);
+
+      return () => clearTimeout(timeout);
+    }
+
+  }, [charIndex, lineIndex]);
   return (
     <main className="portfolio-shell">
       <section id="home" className="landing">
@@ -122,7 +192,14 @@ export default function Portfolio() {
         ))}
       </section>
 
-      <section id="about" className="content-section about-grid">
+      <motion.section
+            id="about"
+            className="content-section about-grid"
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
         <div>
           <p className="section-kicker">ABOUT</p>
           <h2>I automate the operational work teams should not repeat.</h2>
@@ -139,9 +216,16 @@ export default function Portfolio() {
             and repeatable infrastructure changes.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="projects" className="content-section">
+      <motion.section
+          id="projects"
+          className="content-section"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          viewport={{ once: true }}
+        >
         <div className="section-heading-row">
           <div>
             <p className="section-kicker">PROJECTS</p>
@@ -164,9 +248,16 @@ export default function Portfolio() {
             </article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section id="skills" className="content-section skills-section">
+      <motion.section
+            id="skills"
+            className="content-section skills-section"
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
         <p className="section-kicker">STACK</p>
         <h2>Built for mixed infrastructure</h2>
         <div className="skills-grid">
@@ -181,6 +272,72 @@ export default function Portfolio() {
             </article>
           ))}
         </div>
+      </motion.section>
+
+    <section className="content-section terminal-section">
+
+          <p className="section-kicker">TERMINAL</p>
+
+          <div className="terminal-window">
+
+            <div className="terminal-top">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div className="terminal-body">
+
+                  {displayedLines.map((line, index) => (
+
+                    <p
+                      key={index}
+                      className={
+                        line.startsWith("$")
+                          ? ""
+                          : "terminal-output"
+                      }
+                    >
+                      {line.startsWith("$") ? (
+                        <>
+                          <span className="terminal-green">$</span>
+                          {line.replace("$", "")}
+                        </>
+                      ) : (
+                        line
+                      )}
+                    </p>
+
+                  ))}
+
+                  {currentLine && (
+
+                    <p
+                      className={
+                        currentLine.startsWith("$")
+                          ? ""
+                          : "terminal-output"
+                      }
+                    >
+
+                      {currentLine.startsWith("$") ? (
+                        <>
+                          <span className="terminal-green">$</span>
+                          {currentLine.replace("$", "")}
+                        </>
+                      ) : (
+                        currentLine
+                      )}
+
+                      <span className="terminal-cursor">|</span>
+
+                    </p>
+
+                  )}
+
+                </div>
+          </div>
+
       </section>
 
       <section className="content-section awards-section">

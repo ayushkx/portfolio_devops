@@ -46,12 +46,28 @@ a {
   text-decoration: none;
 }
 
+
 .portfolio-shell {
   min-height: 100vh;
   overflow: hidden;
+  animation: pageReveal 1s ease;
   background:
     radial-gradient(circle at 50% 15%, rgba(255, 31, 87, 0.13), transparent 26rem),
     linear-gradient(180deg, #000 0%, #050505 48%, #0a0a0a 100%);
+}
+
+@keyframes pageReveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 }
 
 .landing {
@@ -137,6 +153,24 @@ a {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
   line-height: 1;
+  animation: logoPulse 5s ease-in-out infinite;
+}
+@keyframes logoPulse {
+
+  0% {
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 18px rgba(255,255,255,0.15),
+      0 0 35px rgba(255,0,85,0.12);
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+  }
+
 }
 
 .logo-orbit::before,
@@ -292,12 +326,27 @@ a {
     inset 0 0 60px rgba(255, 0, 85, 0.45);
 
   transform: translateY(4rem);
+  animation: ringFloat 6s ease-in-out infinite;
+}
+
+@keyframes ringFloat {
+  0% {
+    transform: translateY(4rem) scale(1);
+  }
+
+  50% {
+    transform: translateY(3.2rem) scale(1.02);
+  }
+
+  100% {
+    transform: translateY(4rem) scale(1);
+  }
 }
 
 .hero-portrait {
   position: absolute;
 
-  top: 58%;
+  top: 68%;
   left: 50%;
 
 
@@ -313,6 +362,7 @@ a {
     center center / contain no-repeat;
 
   transform: translate(-50%, -50%);
+  animation: portraitFloat 7s ease-in-out infinite;
 
   filter:
     brightness(0.6)
@@ -321,6 +371,22 @@ a {
     drop-shadow(0 0 25px rgba(255, 0, 85, 0.35))
     drop-shadow(0 0 80px rgba(255, 0, 85, 0.18))
     drop-shadow(0 30px 40px rgba(0,0,0,0.75));
+}
+
+@keyframes portraitFloat {
+
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, -48%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%);
+  }
+
 }
 
 /* .hero-art::after {
@@ -418,6 +484,16 @@ a {
 .contact-section {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
+  transition:
+  background 300ms ease,
+  border-color 300ms ease;
+}
+
+.content-section:hover {
+
+  background:
+    radial-gradient(circle at top, rgba(255,0,85,0.03), transparent 40%);
+
 }
 
 .impact-strip {
@@ -563,6 +639,23 @@ a {
     radial-gradient(circle at 50% 18%, rgba(255, 31, 87, 0.18), transparent 8rem),
     #080808;
   padding: 1.3rem;
+  transition:
+  transform 250ms ease,
+  border-color 250ms ease,
+  box-shadow 250ms ease,
+  background 250ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow:
+    0 0 18px rgba(255, 0, 85, 0.18),
+    0 0 60px rgba(255, 0, 85, 0.08);
+
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 31, 87, 0.28), transparent 8rem),
+    #0b0b0b;
 }
 
 .project-card::before {
@@ -600,6 +693,17 @@ a {
   border: 1rem solid var(--accent-deep);
   border-radius: 50%;
   box-shadow: 0 0 38px rgba(255, 31, 87, 0.4);
+  transition:
+  transform 250ms ease,
+  box-shadow 250ms ease;
+}
+
+.project-card:hover .project-mark {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 25px rgba(255, 31, 87, 0.5),
+    0 0 70px rgba(255, 31, 87, 0.25);
 }
 
 .stack {
@@ -820,4 +924,98 @@ a {
     width: 10rem;
     margin-block: 1.4rem;
   }
+}
+
+.terminal-window {
+
+  max-width: 900px;
+
+  margin-top: 3rem;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: #050505;
+
+  box-shadow:
+    0 0 25px rgba(255,0,85,0.08);
+
+  overflow: hidden;
+}
+
+.terminal-top {
+
+  display: flex;
+
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  background: #0b0b0b;
+}
+
+.terminal-top span {
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+}
+
+.terminal-top span:nth-child(1) {
+  background: #ff5f56;
+}
+
+.terminal-top span:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.terminal-top span:nth-child(3) {
+  background: #27c93f;
+}
+
+.terminal-body {
+
+  padding: 2rem;
+
+  font-family: monospace;
+
+  line-height: 2;
+}
+
+.terminal-green {
+  color: #27c93f;
+}
+
+.terminal-output {
+
+  color: #ff1f57;
+
+  margin-bottom: 1.2rem;
+}
+
+.terminal-cursor {
+
+  animation: blink 1s infinite;
+
+  color: #27c93f;
+
+  margin-left: 3px;
+}
+
+@keyframes blink {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
 }
