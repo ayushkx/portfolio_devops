@@ -5,7 +5,7 @@ const navItems = [
 ];
 
 const metrics = [
-  { value: "12", label: "automations" },
+  { value: "12", label: "E2E automations" },
   { value: "$55K+", label: "annual savings" },
   { value: "4.5K+", label: "hours removed" },
   { value: "20+", label: "playbooks" },
@@ -74,7 +74,7 @@ export default function Portfolio() {
             <span className="logo-orbit">
               <span>A</span>
             </span>
-            <span className="brand-word">AUTONYM</span>
+            <span className="brand-word">booting creativity...</span>
           </a>
 
           <h1>
